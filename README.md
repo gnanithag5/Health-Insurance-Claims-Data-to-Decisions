@@ -19,7 +19,20 @@ The pipeline processes data through a structured flow to ensure clean, enriched,
 - **Simulated Changes**: A script (`simulate_changes.sql`) is provided to update raw data manually, mimicking real-world scenarios and testing SCD tracking functionality.  
 
 ---
+### Project Structure
 
+- **Data_Loading_S3/**: Contains SQL scripts to load raw data from AWS S3 into Snowflake.  
+- **models/staging/**: Cleans and standardizes raw data before moving it into the STAGING schema.  
+- **models/intermediate/**: Performs enrichment and aggregation of staged data, creating consolidated datasets in the INTERMEDIATE schema.  
+- **models/marts/finance/**: Builds finance-specific marts for analysis of costs, reimbursements, and provider utilization.  
+- **models/marts/fraud/**: Builds fraud-focused marts to identify suspicious claims, utilization patterns, and fraud signals.  
+- **seeds/**: Holds static lookup tables in CSV format (gender, race, state, yes/no) for reference data.  
+- **snapshots/**: Defines dbt snapshot configurations to track historical changes (SCD Type 2).  
+- **scripts/**: Includes SQL scripts to simulate real-world data changes for testing snapshots and SCD tracking.  
+- **main.py**: Python orchestration script that automates the full pipeline (loading, transformations, snapshots).  
+- **config.py**: Loads and manages environment variables such as Snowflake and AWS credentials.  
+- **dbt_project.yml**: Main dbt configuration file that defines project settings, models, and dependencies.  
+---
 ### Prerequisites
 
 To run this project, ensure you have:
