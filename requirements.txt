@@ -1,0 +1,3 @@
+dbt-snowflake
+snowflake-connector-python
+python-dotenv

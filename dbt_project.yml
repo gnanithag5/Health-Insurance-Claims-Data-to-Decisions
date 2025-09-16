@@ -1,0 +1,47 @@
+name: healthcare_claims_elt
+version: 1.0
+config-version: 2
+
+profile: healthcare_claims_elt   
+model-paths: ["models"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  healthcare_claims_elt:
+    +materialized: view
+
+    staging:
+      +schema: STAGING
+      +materialized: view
+
+    intermediate:
+      +schema: INTERMEDIATE
+      +materialized: table
+
+    marts:
+      +schema: MARTS
+      +materialized: table
+
+      fraud:
+        +schema: MARTS_FRAUD_ANALYSIS
+        +materialized: table
+
+      finance:
+        +schema: MARTS_FINANCE
+        +materialized: table
+
+seeds:
+  healthcare_claims_elt:
+    +schema: LOOKUPS
+    +quote_columns: false
+
+snapshots:
+  healthcare_claims_elt:
+    +schema: SNAPSHOTS
