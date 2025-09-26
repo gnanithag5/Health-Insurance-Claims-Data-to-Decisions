@@ -64,6 +64,5 @@ dbt run --select marts
 dbt snapshot
 ```
 ## Dashboard
-<img width="1417" height="797" alt="Screenshot 2025-09-25 184236" src="https://github.com/user-attachments/assets/ad0b39e5-a3b0-4372-86cb-f534ffe5e2ca" />
-
-<img width="1416" height="797" alt="Screenshot 2025-09-26 124517" src="https://github.com/user-attachments/assets/0974eecb-3915-4e06-a83d-09bfce50cc2d" />
+<img width="1417" height="797" alt="finance" src="https://github.com/user-attachments/assets/2d26fae5-def0-4356-b309-d3552859fbba" />
+<img width="1416" height="797" alt="fraud" src="https://github.com/user-attachments/assets/fe75717c-e14b-4902-a8a1-f48a60d29053" />
