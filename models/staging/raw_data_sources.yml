@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: source_raw_data
+    database: HC_CLAIMS
+    schema: RAW_DATA
+    tables:
+      - name: provider_raw
+      - name: beneficiary_raw
+      - name: inpatient_raw
+      - name: outpatient_raw

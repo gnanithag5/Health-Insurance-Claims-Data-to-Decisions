@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: fct_claims_monthly
+    description: "Monthly summary of claims, reimbursements, and deductibles."
+    columns:
+      - name: month_start_date
+        description: "First day of the month"
+        tests: [not_null]
+      - name: total_claims
+        description: "Number of claims in the month"
+      - name: total_reimbursed
+        description: "Total reimbursed amount"
+      - name: total_deductible
+        description: "Total deductible amount"
+
+  - name: fct_provider_costs
+    description: "Provider-level cost and utilization metrics."
+    columns:
+      - name: provider
+        description: "Provider ID"
+        tests: [not_null, unique]
+      - name: total_claims
+        description: "Total claims submitted by provider"
+      - name: total_reimbursed
+        description: "Total reimbursed amount for provider"
+      - name: avg_claim_amount
+        description: "Average claim reimbursement amount"
+
+  - name: fct_patient_costs
+    description: "Patient-level utilization and cost metrics."
+    columns:
+      - name: beneid
+        description: "Beneficiary (patient) ID"
+        tests: [not_null, unique]
+      - name: total_claims
+        description: "Total claims per patient"
+      - name: unique_providers
+        description: "Number of providers visited by patient"
+      - name: total_reimbursed
+        description: "Total reimbursed amount for patient"
+      - name: chronic_condition_count
+        description: "Number of chronic conditions recorded"
+
+  - name: dim_patient
+    description: "Patient dimension with demographics and condition profile."
+    columns:
+      - name: beneid
+        description: "Patient ID"
+        tests: [not_null, unique]
+      - name: gender
+        description: "Patient gender"
+      - name: dob
+        description: "Date of birth"
+      - name: state
+        description: "Patient’s state of residence"
+
+  - name: dim_time
+    description: "Calendar dimension for time-based aggregations."
+    columns:
+      - name: date
+        description: "Calendar date"
+        tests: [not_null, unique]
+      - name: year
+        description: "Calendar year"
+      - name: month
+        description: "Month number"
+      - name: quarter
+        description: "Quarter number"

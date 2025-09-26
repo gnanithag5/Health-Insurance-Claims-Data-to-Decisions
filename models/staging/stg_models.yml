@@ -1,0 +1,74 @@
+# dbt_transformations/models/staging/_staging__models.yml
+version: 2
+
+models:
+  - name: stg_provider
+    columns:
+      - name: provider_id
+        tests: [not_null, unique]
+      - name: potentialfraud
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+
+
+  - name: stg_beneficiary
+    columns:
+      - name: beneficiary_id
+        tests: [not_null, unique]
+      - name: dob
+      - name: dod
+      - name: gender
+        tests: [not_null]
+      - name: renal_disease_indicator
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: state
+        tests: [not_null]
+      - name: part_a_months_coverage
+      - name: part_b_months_coverage
+      - name: ip_annual_reimbursement_amount_usd
+      - name: ip_annual_deductible_amount_usd
+      - name: op_annual_reimbursement_amount_usd
+      - name: op_annual_deductible_amount_usd
+
+  - name: stg_inpatient
+    columns:
+      - name: claim_id
+        tests: [not_null, unique]
+      - name: beneficiary_id
+        tests: [not_null]
+      - name: provider_id
+        tests: [not_null]
+      - name: claim_start_date
+      - name: claim_end_date
+      - name: admission_date
+      - name: discharge_date
+      - name: paid_amount_usd
+      - name: deductible_amount_usd
+      - name: claim_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['inpatient']
+
+  - name: stg_outpatient
+    columns:
+      - name: claim_id
+        tests: [not_null, unique]
+      - name: beneficiary_id
+        tests: [not_null]
+      - name: provider_id
+        tests: [not_null]
+      - name: claim_start_date
+      - name: claim_end_date
+      - name: paid_amount_usd
+      - name: deductible_amount_usd
+      - name: claim_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['outpatient']
