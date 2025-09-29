@@ -40,7 +40,8 @@ To run this project, ensure you have:
 - Python 3.10+  
 - dbt-snowflake  
 - A Snowflake account with a configured warehouse, role, and database access  
-- An AWS S3 bucket to stage the raw data  
+- An AWS S3 bucket to stage the raw data
+- Create a virtual environemnt
 
 Install Python dependencies:
 
@@ -62,6 +63,10 @@ dbt run --select staging
 dbt run --select intermediate
 dbt run --select marts
 dbt snapshot
+```
+**2. Run main.py**
+```bash
+python main.py
 ```
 ## Dashboard
 <img width="1417" height="797" alt="finance" src="https://github.com/user-attachments/assets/2d26fae5-def0-4356-b309-d3552859fbba" />
