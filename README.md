@@ -37,10 +37,10 @@ The pipeline processes data through a structured flow to ensure clean, enriched,
 
 To run this project, ensure you have:
 
-- Python **3.10+**  
-- **dbt-snowflake**  
-- A **Snowflake account** with a configured warehouse, role, and database access  
-- An **AWS S3 bucket** to stage the raw data  
+- Python 3.10+  
+- dbt-snowflake  
+- A Snowflake account with a configured warehouse, role, and database access  
+- An AWS S3 bucket to stage the raw data  
 
 Install Python dependencies:
 
