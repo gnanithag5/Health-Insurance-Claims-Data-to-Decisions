@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 You have two options to execute the pipeline:
 
-** 1. Manual dbt Commands**
+**1. Manual dbt Commands**
 
 Run each step sequentially:
 
